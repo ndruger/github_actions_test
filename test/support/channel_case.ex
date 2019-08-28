@@ -29,3 +29,4 @@ defmodule GithubActionsTestWeb.ChannelCase do
     :ok
   end
 end
+
