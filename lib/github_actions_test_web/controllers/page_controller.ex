@@ -1,4 +1,4 @@
-defmodule GithubActionsTestWeb.PageController do
+defmodule GithubActionsTestWeb.PageCon
   use GithubActionsTestWeb, :controller
 
   def index(conn, _params) do
