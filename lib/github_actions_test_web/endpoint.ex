@@ -1,4 +1,4 @@
-defmodule GithubActionsTestWeb.Endpoint
+defmodule GithubActionsTestWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :github_actions_test
 
   socket "/socket", GithubActionsTestWeb.UserSocket,
