@@ -1,0 +1,29 @@
+name: Doc
+
+on:
+  push:
+    paths:
+      - 'doc/*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: node:10.16.3-slim
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Aglio
+      uses: docker://humangeo/aglio
+      with:
+        args: -i doc/api.md -o api.html
+    - name: Move
+      run: |
+        mkdir ./artifact
+        mv api.html ./artifact/
+    - uses: actions/upload-artifact@master
+      with:
+        name: my-artifact
+        path: ./artifact

@@ -1,0 +1,25 @@
+name: Assets CI
+
+on:
+  push:
+    paths:
+      - 'assets/**/*.*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: node:10.16.3-slim
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Dependencies
+      working-directory: ./assets
+      run: |
+        npm install
+    - name: Run Build
+      working-directory: ./assets
+      run: |
+        npm run build

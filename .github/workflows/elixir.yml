@@ -1,0 +1,30 @@
+name: Elixir CI
+
+on:
+  push:
+    paths:
+      - 'test/**/*.ex'
+      - 'test/**/*.exs'
+      - 'lib/**/*.ex'
+      - mix.exs
+      - mix.lock
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: elixir:1.9.1-slim
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Dependencies
+      run: |
+        mix local.rebar --force
+        mix local.hex --force
+        mix deps.get
+    # - name: Run Dialyzer
+    #   run: mix dialyzer
+    - name: Run Tests
+      run: mix test
